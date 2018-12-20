@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.safi.business.dao.PermissionDao">
+
+    <resultMap id="permissionMap" type="com.safi.business.model.Permission">
+        <id column="role_id" property="roleId" jdbcType="INTEGER" />
+        <id column="role_name" property="roleName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getPermissionByUserId" resultType="java.lang.String" parameterType="java.lang.Long">
+        select sp.permission_name from s_permission sp left join s_role_permission srp on sp.permission_id = srp.permission_id left join s_user_role sur on srp.role_id = sur.role_id where sur.user_id = #{userId}
+    </select>
+
+</mapper>

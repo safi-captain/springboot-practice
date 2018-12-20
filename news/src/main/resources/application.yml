@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT
+    username: root
+    password: password
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    maxActive: 10
+  jpa:
+    show-sql: true
+    open-in-view: true
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+  mybatis:
+    config-locations: classpath:mapper/Config.xml
+    mapper-locations: classpath:com/safi/business/dao/*.xml

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.safi.business.dao.UserDao">
+
+    <resultMap id="userInfoMap" type="com.safi.business.model.UserInfo">
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <id column="user_name" property="userName" jdbcType="VARCHAR" />
+        <id column="nickname" property="nickname" jdbcType="VARCHAR" />
+        <id column="login_account" property="loginAccount" jdbcType="VARCHAR" />
+        <id column="password" property="password" jdbcType="VARCHAR" />
+        <id column="salt" property="salt" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="countUser" resultType="int">
+        select count(*) from s_user;
+    </select>
+
+    <select id="getUserInfoByAccount" resultMap="userInfoMap" parameterType="java.lang.String">
+        select * from s_user where login_account = #{loginAccount}
+    </select>
+
+</mapper>

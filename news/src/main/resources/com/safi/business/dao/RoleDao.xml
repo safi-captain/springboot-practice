@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.safi.business.dao.RoleDao">
+
+    <resultMap id="roleMap" type="com.safi.business.model.Role">
+        <id column="role_id" property="roleId" jdbcType="INTEGER" />
+        <id column="role_name" property="roleName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getRoleByUserId" resultType="java.lang.String" parameterType="java.lang.Long">
+        select sr.role_name from s_role sr left join s_user_role sur on  sr.role_id = sur.role_id where sur.user_id = #{userId}
+    </select>
+
+</mapper>
